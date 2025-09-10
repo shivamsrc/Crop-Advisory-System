@@ -320,6 +320,18 @@ export default function Dashboard() {
                   </div>
                 </CardContent>
               </Card>
+              
+              {/* Chatbot Icon */}
+              <div className="fixed bottom-6 right-6 z-50">
+                <button className="h-18 w-18 rounded-full shadow-lg overflow-hidden hover:scale-105 transition">
+                  <img
+                    src="https://img.freepik.com/premium-vector/chat-bot-icon-design-robot-say-hi-virtual-smart-assistant-bot-icon-chatbot-symbol-concept-voice_418020-456.jpg"
+                    alt="Chatbot"
+                    className="h-full w-full object-cover"
+                  />
+                </button>
+              </div>
+
             </div>
           </main>
         </div>
