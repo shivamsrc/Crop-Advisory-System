@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { ChevronDown, CloudSun, Droplets, Leaf, LogOut, Menu, Plus, Search, Settings, Sun, Thermometer, TrendingUp, Wheat, Wind, Sparkles, MapPin } from "lucide-react";
+import { Users, Stethoscope, ChevronDown, CloudSun, Droplets, Leaf, LogOut, Menu, Plus, Search, Settings, Sun, Thermometer, TrendingUp, Wheat, Wind, Sparkles, MapPin } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -130,9 +130,16 @@ export default function Dashboard() {
 
                     <button className="flex items-center gap-3 rounded-2xl px-3 py-2 text-left transition hover:bg-emerald-50">
                         <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-600/10 text-emerald-700">
-                        <MapPin />
+                        <Users />
                         </span>
                         <span className="text-[15px]">Farmer posts</span>
+                    </button>
+
+                    <button onClick={()=>navigate("/disease-analysis")} className="flex items-center gap-3 rounded-2xl px-3 py-2 text-left transition hover:bg-emerald-50">
+                      <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-600/10 text-emerald-700">
+                        <Stethoscope />
+                      </span>
+                      <span className="text-[15px]">Disease Prediction</span>
                     </button>
 
                     <button className="flex items-center gap-3 rounded-2xl px-3 py-2 text-left transition hover:bg-emerald-50">
