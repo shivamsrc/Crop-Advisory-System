@@ -128,7 +128,7 @@ export default function Dashboard() {
                         <span className="text-[15px]">Market prices</span>
                     </button>
 
-                    <button className="flex items-center gap-3 rounded-2xl px-3 py-2 text-left transition hover:bg-emerald-50">
+                    <button onClick={()=>navigate("/community")} className="flex items-center gap-3 rounded-2xl px-3 py-2 text-left transition hover:bg-emerald-50">
                         <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-600/10 text-emerald-700">
                         <Users />
                         </span>
