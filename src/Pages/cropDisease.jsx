@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Upload, X } from "lucide-react";
+import { Upload, X, AlertTriangle } from "lucide-react";
 
 export default function Disease() {
   const [file, setFile] = useState(null);
@@ -26,38 +26,61 @@ export default function Disease() {
   };
 
   const handlePredict = () => {
-    setPrediction("Model is Predicting it's a Tomato___Tomato_Yellow_Leaf_Curl_Virus");
+    // Example: in real case you'll map results from your ML model
+    setPrediction({
+      crop: "Tomato",
+      disease: "Tomato Yellow Leaf Curl Virus",
+      severity: "High",
+      symptoms: [
+        "Upward curling of leaves",
+        "Yellowing between veins",
+        "Stunted plant growth",
+      ],
+      causes: "Caused by Tomato Yellow Leaf Curl Virus transmitted by whiteflies.",
+      treatment: {
+        chemical: "Use insecticides like Imidacloprid for whitefly control.",
+        organic:
+          "Introduce neem oil sprays and yellow sticky traps to control whiteflies.",
+      },
+      prevention: [
+        "Plant resistant varieties if available.",
+        "Use insect-proof nets.",
+        "Avoid planting tomatoes near infected crops.",
+      ],
+    });
   };
 
   return (
     <div className="min-h-screen w-full bg-gray-50 p-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">Disease Recognition</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center">
+        Disease Recognition
+      </h1>
 
       {/* upload file */}
-      <div className=" flex justify-between border-2 border-dashed border-gray-300 rounded-lg p-10 text-center bg-white">
+      <div className="flex justify-between border-2 border-dashed border-gray-300 rounded-lg p-10 text-center bg-white">
         <div className="flex flex-row">
-            <div className="mr-5">
-                <Upload className="w-12 h-12 mx-auto text-gray-400" />
-            </div>
-            <div>
-                <p className="text-gray-600 mt-2 text-lg">Drag and drop file here</p>
-                <p className="text-gray-400 text-sm">Limit: 10MB per file</p>
-            </div>
+          <div className="mr-5">
+            <Upload className="w-12 h-12 mx-auto text-gray-400" />
+          </div>
+          <div>
+            <p className="text-gray-600 mt-2 text-lg">Drag and drop file here</p>
+            <p className="text-gray-400 text-sm">Limit: 10MB per file</p>
+          </div>
         </div>
 
         <div>
-        <input
-          type="file"
-          id="fileInput"
-          onChange={handleFileChange}
-          className="hidden"
-        />
-        <label
-          htmlFor="fileInput"
-          className="inline-block mt-4 px-5 py-2 bg-emerald-600 text-white text-base rounded-lg hover:bg-emerald-700 cursor-pointer"
-        >
-          Browse files
-        </label>
+          <input
+            type="file"
+            id="fileInput"
+            onChange={handleFileChange}
+            className="hidden"
+          />
+          <label
+            htmlFor="fileInput"
+            className="inline-block mt-4 px-5 py-2 bg-emerald-600 text-white text-base rounded-lg hover:bg-emerald-700 cursor-pointer"
+          >
+            Browse files
+          </label>
         </div>
       </div>
 
@@ -104,12 +127,64 @@ export default function Disease() {
         </div>
       )}
 
-      {/* Prediction */}
+      {/* Advisory Card */}
       {prediction && (
-        <div className="mt-8">
-          <p className="text-lg font-semibold mb-2">Our Prediction</p>
-          <div className="bg-green-100 border border-green-300 text-green-700 p-4 rounded-lg text-base">
-            {prediction}
+        <div className="mt-10 bg-white border rounded-xl shadow-lg p-6 max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-green-700 mb-4">
+            Advisory Report
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <p className="text-gray-700">
+                <span className="font-semibold">Crop:</span> {prediction.crop}
+              </p>
+              <p className="text-gray-700">
+                <span className="font-semibold">Disease:</span>{" "}
+                {prediction.disease}
+              </p>
+              <p className="text-gray-700 flex items-center">
+                <AlertTriangle className="w-5 h-5 text-red-500 mr-2" />
+                <span className="font-semibold">Severity:</span>{" "}
+                {prediction.severity}
+              </p>
+            </div>
+
+            <div>
+              <p className="font-semibold text-gray-800">Symptoms:</p>
+              <ul className="list-disc ml-5 text-gray-600">
+                {prediction.symptoms.map((s, i) => (
+                  <li key={i}>{s}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-4">
+            <p className="font-semibold text-gray-800">Causes:</p>
+            <p className="text-gray-600">{prediction.causes}</p>
+          </div>
+
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <p className="font-semibold text-gray-800">Recommended Treatment:</p>
+              <p className="text-gray-700">
+                <span className="font-semibold">Chemical:</span>{" "}
+                {prediction.treatment.chemical}
+              </p>
+              <p className="text-gray-700">
+                <span className="font-semibold">Organic:</span>{" "}
+                {prediction.treatment.organic}
+              </p>
+            </div>
+
+            <div>
+              <p className="font-semibold text-gray-800">Prevention:</p>
+              <ul className="list-disc ml-5 text-gray-600">
+                {prediction.prevention.map((p, i) => (
+                  <li key={i}>{p}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       )}
