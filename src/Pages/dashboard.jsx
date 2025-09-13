@@ -107,6 +107,14 @@ export default function Dashboard() {
                         <span className="text-[15px]">Crop Recommendation</span>
                     </button>
 
+                  //changes done by aman d02 */}
+                     <button onClick={()=>navigate("/recommendation")} className="flex items-center gap-3 rounded-2xl px-3 py-2 text-left transition hover:bg-emerald-50">
+                        <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-600/10 text-emerald-700">
+                        <Sparkles />
+                        </span>
+                        <span className="text-[15px]">Soil Health</span>
+                    </button>
+
                     <button onClick={()=>navigate("/input-yield")} className="flex items-center gap-3 rounded-2xl px-3 py-2 text-left transition hover:bg-emerald-50">
                         <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-600/10 text-emerald-700">
                         <Sparkles />
