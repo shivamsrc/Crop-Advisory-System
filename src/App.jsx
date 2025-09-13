@@ -5,6 +5,7 @@ import OutputPage from "./Pages/outputCropAdvisory";
 import InputYieldPage from "./Pages/inputYieldProduction";
 import Disease from "./Pages/cropDisease";
 import Community from "./Pages/communityPage";
+import Soilhealth from "./Pages/Soilhealth"; 
 
 export default function App(){
 
@@ -17,6 +18,7 @@ export default function App(){
         <Route path="/input-yield" element={<InputYieldPage/>}/>
         <Route path="/disease-analysis" element={<Disease/>}/>
         <Route path="/community" element={<Community/>}/>
+         <Route path="/recommendation" element={<Soilhealth/>} />
       </Routes>
     </BrowserRouter>
   </div>
